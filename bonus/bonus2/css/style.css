@@ -5,6 +5,10 @@
     margin: 0;
 }
 
+body{
+    background-color: black;
+}
+
 /* Main Rules */
 .container{
     width: 100%;
@@ -51,15 +55,12 @@
 
 .img-carousel{
     max-height: 500px;
+    border: 2px solid white;
+    border-radius: 10px;
     display: none;
 }
 
-/* Mostrare bottoni */
+/* Mostrare slide */
 .active{
     display: inline-block;
-}
-
-/* Nascondere slide */
-.hidden{
-    display: none;
 }
