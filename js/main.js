@@ -1,39 +1,77 @@
-// Creare uno carousel con una serie di immagini
+// Creare uno carousel con una serie di immagini generate da js
 
-const slide = document.getElementsByClassName("img-carousel");
+// Componenti DOM
+const images = document.getElementById("img-carousel");
+
+const container = document.querySelector(".item");
 
 const buttonUp = document.querySelector(".circle.up");
 
 const buttonDown = document.querySelector(".circle.down");
 
-let nSlide = 1;
+// Dichiarazione array immagini
+const imgArray = new Array;
 
-buttonUp.addEventListener("click",
+imgArray[0] = new Image();
+imgArray[0].src = 'img/01.webp';
+
+imgArray[1] = new Image();
+imgArray[1].src = 'img/02.webp';
+
+imgArray[2] = new Image();
+imgArray[2].src = 'img/03.webp';
+
+imgArray[3] = new Image();
+imgArray[3].src = 'img/04.webp';
+
+imgArray[4] = new Image();
+imgArray[4].src = 'img/05.webp';
+
+// Aggiunta classe per rendere visibile la prima slide
+imgArray[0].classList.add("active")
+
+
+// Dichirazione slide attuale
+let nSlide = 0;
+
+
+// Ciclo per aggiungere immagini e le classi
+for (let i = 0; i < 5; i++){
+    container.append(imgArray[i]);
+    imgArray[i].classList.add("img-carousel")
+}
+
+// Freccia giù
+buttonDown.addEventListener("click",
     function(){
         nSlide++;
-        slide[(nSlide - 1)].classList.add("active")
-        slide[(nSlide - 2)].classList.remove("active")
-        
-        if (nSlide === 2){
-            buttonDown.classList.remove("hidden")
+   
+        imgArray[nSlide].classList.add("active")
+        imgArray[(nSlide - 1)].classList.remove("active")
 
-        } else if (nSlide === 5){
-            buttonUp.classList.add("hidden")
+        if (nSlide === 2){
+            buttonUp.classList.remove("hidden")
+
+        } else if (nSlide === 4){
+            buttonDown.classList.add("hidden")
+
         }
     }
 )
 
-buttonDown.addEventListener("click",
+// Freccia su
+buttonUp.addEventListener("click",
     function(){
         nSlide--;
-        slide[nSlide].classList.remove("active")
-        slide[(nSlide - 1)].classList.add("active")
+
+        imgArray[nSlide].classList.add("active")
+        imgArray[(nSlide + 1)].classList.remove("active")
         
-        if (nSlide === 1){
-            buttonDown.classList.add("hidden")
+        if (nSlide === 0){
+            buttonUp.classList.add("hidden")
             
         } else if (nSlide === 4){
-            buttonUp.classList.remove("hidden")
+            buttonDown.classList.remove("hidden")
         }
     }
 )
