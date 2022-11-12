@@ -1,8 +1,6 @@
 // Creare uno carousel con una serie di immagini generate da js
 
 // Componenti DOM
-const images = document.getElementById("img-carousel");
-
 const container = document.querySelector(".item");
 
 const buttonUp = document.querySelector(".circle.up");

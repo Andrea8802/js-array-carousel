@@ -1,8 +1,6 @@
 // Creare uno carousel con una serie di immagini generate da js
 
 // Componenti DOM
-const images = document.getElementById("img-carousel");
-
 const container = document.querySelector(".item");
 
 const buttonUp = document.querySelector(".circle.up");
@@ -39,6 +37,7 @@ imgArray[1].classList.add("active")
 
 // Dichirazione slide attuale
 let nSlide = 1;
+let lastImage = imgArray.length - 1;
 
 
 // Ciclo per aggiungere immagini e le classi
@@ -55,7 +54,7 @@ buttonDown.addEventListener("click",
         imgArray[nSlide].classList.add("active")
         imgArray[(nSlide - 1)].classList.remove("active")    
 
-        if (nSlide === 6){
+        if (nSlide === lastImage){
             imgArray[nSlide].classList.remove("active");
             nSlide = 1;
             imgArray[nSlide].classList.add("active");
@@ -77,7 +76,7 @@ buttonUp.addEventListener("click",
 
         if (nSlide === 0){
             imgArray[nSlide].classList.remove("active");
-            nSlide = 5;
+            nSlide = lastImage - 1;
             imgArray[nSlide].classList.add("active");
         }
 
